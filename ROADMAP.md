@@ -207,3 +207,17 @@ History:
 ```
 
 > **Goal:** Provide enterprise-level traceability, improve security, and ensure accountability for every important action performed within the ERP.
+### Professional Profile & Recruitment
+
+The platform will evolve beyond a traditional ERP by allowing employees to maintain a persistent professional profile across companies.
+
+#### Planned Features
+
+- Persistent employee profile.
+- Employment history across multiple companies.
+- Skills, certifications, and education management.
+- Professional portfolio.
+- Internal recruitment marketplace.
+- AI-powered candidate matching.
+- LinkedIn profile integration (if supported by available APIs and user consent).
+- Secure transfer of professional profiles between companies while preserving data ownership and privacy.
