@@ -221,3 +221,68 @@ The platform will evolve beyond a traditional ERP by allowing employees to maint
 - AI-powered candidate matching.
 - LinkedIn profile integration (if supported by available APIs and user consent).
 - Secure transfer of professional profiles between companies while preserving data ownership and privacy.
+
+
+✅ Phase 1 - Project Initialization
+    ✔ Spring Boot
+    ✔ Maven
+    ✔ Git
+    ✔ PostgreSQL
+
+🟢 Phase 2 - User & Company (In Progress)
+    ✔ User
+    ✔ Company
+    ✔ Role
+    ✔ Department
+    ✔ EmployeeStatus
+    ✔ User → Company Relationship
+
+⬜ Phase 3 - Business Partners
+    □ Supplier
+    □ Customer
+
+⬜ Phase 4 - Inventory
+    □ RawMaterial
+    □ Product
+
+⬜ Phase 5 - Manufacturing
+    □ Formula
+    □ FormulaItem
+
+⬜ Phase 6 - Purchasing
+    □ Purchase
+    □ PurchaseItem
+
+⬜ Phase 7 - Sales
+    □ Sale
+    □ SaleItem
+
+⬜ Phase 8 - Stock Management
+    □ StockMovement
+
+⬜ Phase 9 - Finance
+    □ Expense
+    □ FinancialTransaction
+
+⬜ Phase 10 - Security
+    □ Spring Security
+    □ JWT
+    □ Authentication
+    □ Authorization
+
+⬜ Phase 11 - REST API
+    □ Repository
+    □ Service
+    □ DTO
+    □ Controller
+    □ Exception Handling
+
+⬜ Phase 12 - Frontend
+    □ Angular Dashboard
+    □ Authentication
+    □ CRUD Pages
+
+⬜ Phase 13 - Deployment
+    □ Docker
+    □ CI/CD
+    □ Cloud Deployment
