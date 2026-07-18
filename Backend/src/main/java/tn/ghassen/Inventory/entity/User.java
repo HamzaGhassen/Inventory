@@ -33,25 +33,34 @@ public class User {
     // Employee last name (required)
     @Column(nullable = false)
     private String lastName;
-    // Employee email Unique
-    @Column(unique = true)
+    // Employee email Unique and required
+    @Column(nullable = false, unique = true)
     private String email;
-
+    // Employee password (required)
+    @Column(nullable = false)
     private String password;
 
     private String phone;
     @Column(nullable = false)
+
     // Employee's role inside the company
     @Enumerated(EnumType.STRING)
     private Role role;
     @Column(nullable = false)
+
     // Employee's status inside the company
     @Enumerated(EnumType.STRING)
     private EmployeeStatus status;
+
     // Employee's department inside the company
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Department department;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    // add foreign key
+    @ManyToOne
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
 }
