@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.ghassen.inventory.enums.Department;
 import tn.ghassen.inventory.enums.EmployeeStatus;
 import tn.ghassen.inventory.enums.Role;
 
@@ -47,6 +48,9 @@ public class User {
     // Employee's status inside the company
     @Enumerated(EnumType.STRING)
     private EmployeeStatus status;
+    // Employee's department inside the company
+    @Enumerated(EnumType.STRING)
+    private Department department;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
