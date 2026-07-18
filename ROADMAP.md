@@ -170,3 +170,40 @@ title Inventory ERP Evolution
         : Employee Profiles
         : AI Assistant
 ```
+## 🔮 Future Features
+
+### Audit & Activity Tracking
+
+To improve traceability and security, the platform will include a complete auditing system.
+
+#### Planned Features
+
+- Automatically record the creation and last modification date of every entity (`createdAt`, `updatedAt`).
+- Track the user responsible for each operation (`createdBy`, `updatedBy`).
+- Maintain a complete audit history of all critical changes.
+- Allow administrators to view who modified a record, what was changed, and when.
+- Support activity logs for security investigations and compliance.
+- Display the latest activity directly from the user profile.
+- Generate audit reports for management and administrators.
+
+### Example
+
+```
+User: Ahmed
+
+Created:
+18/07/2026 10:35
+
+Last Updated:
+02/08/2026 16:12
+
+Updated By:
+Administrator
+
+History:
+• Email updated
+• Role changed from SALES to MANAGER
+• Status changed to ON_LEAVE
+```
+
+> **Goal:** Provide enterprise-level traceability, improve security, and ensure accountability for every important action performed within the ERP.
