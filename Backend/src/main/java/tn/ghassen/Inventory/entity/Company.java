@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,10 +15,8 @@ import java.time.LocalDateTime;
 @Table(name="companies")
 
 @Entity
-public class Company {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Company extends BaseEntity {
+
     @Column(nullable = false)
     private String name;
 
@@ -36,8 +34,14 @@ public class Company {
 
     private String logo;
 
-    private LocalDateTime createdAt;
+    @OneToMany(mappedBy = "company")
+    private List<User> users;
 
-    private LocalDateTime updatedAt;
+    @OneToMany (mappedBy ="company")
+    private List<Customer> customers;
+
+    @OneToMany (mappedBy="company")
+    private List<Supplier> suppliers;
+
 }
 

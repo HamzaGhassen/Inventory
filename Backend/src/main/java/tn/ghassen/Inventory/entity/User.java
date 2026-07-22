@@ -9,7 +9,6 @@ import tn.ghassen.inventory.enums.Department;
 import tn.ghassen.inventory.enums.EmployeeStatus;
 import tn.ghassen.inventory.enums.Role;
 
-import java.time.LocalDateTime;
 // Lombok Getters and Setters
 @Getter
 @Setter
@@ -21,12 +20,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class User {
-// ID Annotation
-    @Id
-// Primary key generated automatically by PostgreSQL
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id ;
+public class User extends BaseEntity {
+
     // Employee first name (required)
     @Column(nullable = false)
     private String firstName;
@@ -40,8 +35,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    private String phone;
     @Column(nullable = false)
+    private String phone;
 
     // Employee's role inside the company
     @Enumerated(EnumType.STRING)
@@ -57,8 +52,7 @@ public class User {
     @Column(nullable = false)
     private Department department;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+
     // add foreign key
     @ManyToOne
     @JoinColumn(name = "company_id", nullable = false)
