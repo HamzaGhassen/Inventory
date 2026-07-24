@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.ghassen.inventory.enums.ProductType;
+import tn.ghassen.inventory.enums.Unit;
 
 import java.math.BigDecimal;
 
