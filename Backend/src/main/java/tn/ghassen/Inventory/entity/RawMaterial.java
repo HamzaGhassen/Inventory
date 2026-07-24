@@ -9,6 +9,8 @@ import tn.ghassen.inventory.enums.RawMaterialStatus;
 import tn.ghassen.inventory.enums.Unit;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -40,4 +42,7 @@ public class RawMaterial extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
+
+    @OneToMany(mappedBy = "rawmaterial")
+    private List<FormulaItem> formulaItems = new ArrayList<>();
 }
