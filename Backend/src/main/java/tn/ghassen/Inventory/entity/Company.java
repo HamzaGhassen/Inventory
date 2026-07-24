@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -35,13 +36,12 @@ public class Company extends BaseEntity {
     private String logo;
 
     @OneToMany(mappedBy = "company")
-    private List<User> users;
-
+    private List<User> users = new ArrayList<>();
     @OneToMany (mappedBy ="company")
-    private List<Customer> customers;
+    private List<Customer> customers = new ArrayList<>();
 
     @OneToMany (mappedBy="company")
-    private List<Supplier> suppliers;
+    private List<Supplier> suppliers = new ArrayList<>();
 
 }
 
