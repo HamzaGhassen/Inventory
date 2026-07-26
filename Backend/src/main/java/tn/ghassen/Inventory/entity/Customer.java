@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -18,4 +20,9 @@ public class Customer extends BusinessPartner {
     @ManyToOne
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
+
+
+    @OneToMany(mappedBy = "customer")
+    private List<Sale> sales = new ArrayList<>();
+
 }

@@ -9,6 +9,9 @@ import tn.ghassen.inventory.enums.Department;
 import tn.ghassen.inventory.enums.EmployeeStatus;
 import tn.ghassen.inventory.enums.Role;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Lombok Getters and Setters
 @Getter
 @Setter
@@ -57,4 +60,15 @@ public class User extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
+
+
+    @OneToMany(mappedBy = "user")
+    private List<Purchase> purchases = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "user")
+    private List<Sale> sales = new ArrayList<>();
+
+
+
 }

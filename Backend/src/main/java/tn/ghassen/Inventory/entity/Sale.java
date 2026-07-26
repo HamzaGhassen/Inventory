@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.ghassen.inventory.enums.PaymentMethod;
-import tn.ghassen.inventory.enums.SaleStatus;
+import tn.ghassen.inventory.enums.PaymentStatus;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -45,10 +45,12 @@ public class Sale extends BaseEntity{
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private SaleStatus status;
+    private PaymentStatus paymentStatus;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private PaymentMethod paymentMethod;
+
+
 }
 

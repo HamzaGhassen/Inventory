@@ -53,5 +53,8 @@ public class Company extends BaseEntity {
     private List<Product> products = new ArrayList<>();
 
 
+    @OneToMany(mappedBy = "company")
+    private List<Purchase> purchases = new ArrayList<>();
+
 }
 
