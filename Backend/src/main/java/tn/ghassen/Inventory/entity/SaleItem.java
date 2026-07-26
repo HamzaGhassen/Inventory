@@ -26,9 +26,11 @@ public class SaleItem extends BaseEntity{
     @Column(nullable = false)
     private BigDecimal quantity;
 
-    // Stores the product selling price at the time of the sale.    @Column(nullable = false)
+    // Stores the product selling price at the time of the sale.
+     @Column(nullable = false)
     private BigDecimal unitPrice;
-    // Total amount = quantity × unitPrice.    @Column(nullable = false)
+    // Total amount = quantity × unitPrice.
+    @Column(nullable = false)
     private BigDecimal totalPrice;
 
     private BigDecimal discount;
