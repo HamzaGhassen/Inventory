@@ -21,7 +21,7 @@ public class PurchaseItem extends BaseEntity{
     
     
     @ManyToOne
-    @JoinColumn(name = "raw_material_id")
+    @JoinColumn(name = "rawmaterial_id")
     private RawMaterial rawMaterial;
     
     @ManyToOne
