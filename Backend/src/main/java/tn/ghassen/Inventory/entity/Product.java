@@ -9,6 +9,8 @@ import tn.ghassen.inventory.enums.ProductType;
 import tn.ghassen.inventory.enums.Unit;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,4 +41,16 @@ public class Product extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
+
+    @OneToMany(mappedBy = "product")
+    private List<SaleItem> saleItems = new ArrayList<>();
+
+    @OneToOne(mappedBy = "product")
+    private Formula formula;
+
+    @OneToMany(mappedBy = "product")
+    private List<PurchaseItem> purchaseItems = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product")
+    private List<StockMovement> stockMovements;
 }

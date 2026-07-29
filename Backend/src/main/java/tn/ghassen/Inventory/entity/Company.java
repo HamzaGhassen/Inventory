@@ -56,5 +56,15 @@ public class Company extends BaseEntity {
     @OneToMany(mappedBy = "company")
     private List<Purchase> purchases = new ArrayList<>();
 
+    @OneToMany(mappedBy = "company")
+    private List<StockMovement> stockMovements = new ArrayList<>();
+
+    @OneToMany(mappedBy = "company")
+    private List<Expense> expenses = new ArrayList<>();
+
+    @OneToMany(mappedBy = "company")
+    private List<FinancialTransaction> financialTransactions = new ArrayList<>();
+
+
 }
 

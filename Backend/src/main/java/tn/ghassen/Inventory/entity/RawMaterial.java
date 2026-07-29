@@ -45,4 +45,10 @@ public class RawMaterial extends BaseEntity {
 
     @OneToMany(mappedBy = "rawmaterial")
     private List<FormulaItem> formulaItems = new ArrayList<>();
+
+    @OneToMany(mappedBy = "rawMaterial")
+    private List<PurchaseItem> purchaseItems = new ArrayList<>();
+
+    @OneToMany(mappedBy = "rawMaterial")
+    private List<StockMovement> stockMovements;
 }

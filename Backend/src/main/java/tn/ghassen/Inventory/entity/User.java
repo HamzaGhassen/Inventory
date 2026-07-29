@@ -69,6 +69,7 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user")
     private List<Sale> sales = new ArrayList<>();
 
-
+    @OneToMany(mappedBy = "user")
+    private List<StockMovement> stockMovements;
 
 }

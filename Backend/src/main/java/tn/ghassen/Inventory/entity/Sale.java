@@ -51,6 +51,9 @@ public class Sale extends BaseEntity{
     @Column(nullable = false)
     private PaymentMethod paymentMethod;
 
+    @OneToMany(mappedBy = "sale")
+    private List<StockMovement> stockMovements;
+
 
 }
 

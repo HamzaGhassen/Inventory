@@ -23,4 +23,7 @@ public class Formula extends BaseEntity {
 
     @OneToMany(mappedBy = "formula")
     private List<FormulaItem> formulaItems = new ArrayList<>();
+
+    @OneToMany(mappedBy = "formula")
+    private List<StockMovement> stockMovements;
 }
