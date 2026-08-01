@@ -1,7 +1,12 @@
 package tn.ghassen.inventory.entity;
 
 import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class BusinessPartner extends BaseEntity {
 
