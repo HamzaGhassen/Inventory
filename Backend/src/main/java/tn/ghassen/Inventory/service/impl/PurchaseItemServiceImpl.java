@@ -1,14 +1,15 @@
-package tn.ghassen.inventory.service;
+package tn.ghassen.inventory.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.ghassen.inventory.entity.PurchaseItem;
 import tn.ghassen.inventory.repository.PurchaseItemRepository;
+import tn.ghassen.inventory.service.PurchaseItemService;
 
 import java.util.List;
 @Service
 @RequiredArgsConstructor
-public class PurchaseItemServiceImpl implements PurchaseItemService{
+public class PurchaseItemServiceImpl implements PurchaseItemService {
 
     private final PurchaseItemRepository purchaseItemRepository;
     @Override
