@@ -9,7 +9,6 @@ public record PurchaseCreateDTO(
         Long userId,
         Long companyId,
         BigDecimal totalAmount,
-        String description,
         PaymentStatus paymentStatus,
         PaymentMethod paymentMethod
 ) {
