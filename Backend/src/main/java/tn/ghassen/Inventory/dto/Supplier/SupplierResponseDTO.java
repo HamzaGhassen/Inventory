@@ -1,6 +1,7 @@
 package tn.ghassen.inventory.dto.Supplier;
 
 public record SupplierResponseDTO(
+        Long id,
         String name,
         String email,
         String phone,
