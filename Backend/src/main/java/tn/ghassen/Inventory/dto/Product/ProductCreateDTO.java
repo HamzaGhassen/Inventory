@@ -1,7 +1,5 @@
 package tn.ghassen.inventory.dto.Product;
 
-import jakarta.persistence.*;
-import tn.ghassen.inventory.entity.Company;
 import tn.ghassen.inventory.enums.ProductType;
 import tn.ghassen.inventory.enums.Unit;
 

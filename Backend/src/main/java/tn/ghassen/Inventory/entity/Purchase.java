@@ -41,7 +41,6 @@ public class Purchase extends BaseEntity{
     @Column(nullable = false)
     private BigDecimal totalAmount;
 
-    private String description;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
