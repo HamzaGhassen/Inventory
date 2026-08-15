@@ -38,7 +38,6 @@ public class PurchaseServiceImpl implements PurchaseService {
         existing.setSupplier(purchase.getSupplier());
         existing.setUser(purchase.getUser());
         existing.setCompany(purchase.getCompany());
-        existing.setDescription(purchase.getDescription());
         existing.setTotalAmount(purchase.getTotalAmount());
         existing.setPaymentStatus(purchase.getPaymentStatus());
         existing.setPaymentMethod(purchase.getPaymentMethod());
