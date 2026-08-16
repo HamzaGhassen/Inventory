@@ -37,12 +37,23 @@ public class CompanyMapper {
     }
 
     public void updateEntity(Company company, CompanyUpdateDTO dto) {
-
-        company.setName(dto.getName());
-        company.setEmail(dto.getEmail());
-        company.setPhone(dto.getPhone());
-        company.setAddress(dto.getAddress());
-        company.setTaxNumber(dto.getTaxNumber());
-        company.setLogo(dto.getLogo());
+        if (dto.getName() != null) {
+            company.setName(dto.getName());
+        }
+        if (dto.getEmail() != null) {
+            company.setEmail(dto.getEmail());
+        }
+        if (dto.getPhone() != null) {
+            company.setPhone(dto.getPhone());
+        }
+        if (dto.getAddress() != null) {
+            company.setAddress(dto.getAddress());
+        }
+        if (dto.getTaxNumber() != null) {
+            company.setTaxNumber(dto.getTaxNumber());
+        }
+        if (dto.getLogo() != null) {
+            company.setLogo(dto.getLogo());
+        }
     }
 }

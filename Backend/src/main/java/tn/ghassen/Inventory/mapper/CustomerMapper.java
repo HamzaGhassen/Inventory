@@ -41,11 +41,23 @@ public class CustomerMapper {
     }
 
     public void updateEntity(Customer customer, CustomerUpdateDTO dto) {
-        customer.setName(dto.getName());
-        customer.setEmail(dto.getEmail());
-        customer.setPhone(dto.getPhone());
-        customer.setAddress(dto.getAddress());
-        customer.setTaxNumber(dto.getTaxNumber());
-        customer.setLogo(dto.getLogo());
+        if (dto.getName() != null) {
+            customer.setName(dto.getName());
+        }
+        if (dto.getEmail() != null) {
+            customer.setEmail(dto.getEmail());
+        }
+        if (dto.getPhone() != null) {
+            customer.setPhone(dto.getPhone());
+        }
+        if (dto.getAddress() != null) {
+            customer.setAddress(dto.getAddress());
+        }
+        if (dto.getTaxNumber() != null) {
+            customer.setTaxNumber(dto.getTaxNumber());
+        }
+        if (dto.getLogo() != null) {
+            customer.setLogo(dto.getLogo());
+        }
     }
 }

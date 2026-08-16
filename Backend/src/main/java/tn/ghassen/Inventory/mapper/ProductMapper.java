@@ -41,16 +41,35 @@ public class ProductMapper {
 
    }
 
-   public void updateEntity(Product product , ProductUpdateDTO dto){
+    public void updateEntity(Product product, ProductUpdateDTO dto) {
 
+        if (dto.name() != null) {
+            product.setName(dto.name());
+        }
 
-       product.setName(dto.name());
-       product.setLogo(dto.logo());
-       product.setCostPrice(dto.costPrice());
-       product.setSellingPrice(dto.sellingPrice());
-       product.setQuantity(dto.quantity());
-       product.setProductType(dto.productType());
-       product.setUnit(dto.unit());
-   }
+        if (dto.logo() != null) {
+            product.setLogo(dto.logo());
+        }
+
+        if (dto.costPrice() != null) {
+            product.setCostPrice(dto.costPrice());
+        }
+
+        if (dto.sellingPrice() != null) {
+            product.setSellingPrice(dto.sellingPrice());
+        }
+
+        if (dto.quantity() != null) {
+            product.setQuantity(dto.quantity());
+        }
+
+        if (dto.productType() != null) {
+            product.setProductType(dto.productType());
+        }
+
+        if (dto.unit() != null) {
+            product.setUnit(dto.unit());
+        }
+    }
 
 }

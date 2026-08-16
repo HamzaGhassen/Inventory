@@ -40,8 +40,16 @@ public class UserMapper {
     }
 
     public void updateEntity(User user, UserUpdateDTO dto) {
-        user.setFirstName(dto.getFirstName());
-        user.setLastName(dto.getLastName());
-        user.setPhone(dto.getPhone());
+        if (dto.getFirstName() != null) {
+            user.setFirstName(dto.getFirstName());
+        }
+
+        if (dto.getLastName() != null) {
+            user.setLastName(dto.getLastName());
+        }
+
+        if (dto.getPhone() != null) {
+            user.setPhone(dto.getPhone());
+        }
     }
 }

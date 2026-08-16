@@ -21,9 +21,12 @@ public class PurchaseMapper {
     }
 
     public void updateEntity(Purchase purchase, PurchaseUpdateDTO dto) {
-
-        purchase.setPaymentStatus(dto.paymentStatus());
-        purchase.setPaymentMethod(dto.paymentMethod());
+        if (dto.paymentStatus() != null) {
+            purchase.setPaymentStatus(dto.paymentStatus());
+        }
+        if (dto.paymentMethod() != null) {
+            purchase.setPaymentMethod(dto.paymentMethod());
+        }
     }
 
     public PurchaseResponseDTO toResponseDTO(Purchase purchase) {

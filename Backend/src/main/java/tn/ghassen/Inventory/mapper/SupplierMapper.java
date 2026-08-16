@@ -34,16 +34,31 @@ public class SupplierMapper {
         );
 
     }
+    public void updateEntity(Supplier supplier, SupplierUpdateDTO dto) {
 
-    public void updateEntity(Supplier supplier , SupplierUpdateDTO dto){
+        if (dto.name() != null) {
+            supplier.setName(dto.name());
+        }
 
-        supplier.setName(dto.name());
-        supplier.setEmail(dto.email());
-        supplier.setPhone(dto.phone());
-        supplier.setAddress(dto.address());
-        supplier.setTaxNumber(dto.taxNumber());
-        supplier.setLogo(dto.logo());
+        if (dto.email() != null) {
+            supplier.setEmail(dto.email());
+        }
 
+        if (dto.phone() != null) {
+            supplier.setPhone(dto.phone());
+        }
+
+        if (dto.address() != null) {
+            supplier.setAddress(dto.address());
+        }
+
+        if (dto.taxNumber() != null) {
+            supplier.setTaxNumber(dto.taxNumber());
+        }
+
+        if (dto.logo() != null) {
+            supplier.setLogo(dto.logo());
+        }
     }
 
 }
