@@ -60,3 +60,26 @@ DTO field = null → keep the existing entity value unchanged.
 
 This approach makes partial updates safe, predictable, and resistant to accidental data loss.
     
+<br></br>
+### MVC Architecture — Angular & Spring Boot
+```mermaid
+flowchart LR
+
+    USER["👤 USER"]
+
+    VIEW["🖥️ VIEW<br/>Angular Components"]
+
+    CONTROLLER["🎯 CONTROLLER<br/>Spring Boot"]
+
+    MODEL["📦 MODEL<br/>Spring Boot"]
+
+    USER -->|"Request"| VIEW
+    VIEW -->|"HTTP Request"| CONTROLLER
+    CONTROLLER -->|"Manipulates"| MODEL
+    MODEL -->|"Data"| CONTROLLER
+    CONTROLLER -->|"HTTP Response"| VIEW
+    VIEW -->|"Display"| USER
+
+```
+
+The application follows an MVC architecture with Angular Components as the View and Spring Boot handling the Controller and Model layers. This separation of concerns promotes clean, maintainable, testable, and scalable code, while keeping the frontend and backend responsibilities clearly defined.
