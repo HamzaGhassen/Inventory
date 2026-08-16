@@ -1,0 +1,18 @@
+package tn.ghassen.inventory.dto.Expense;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import tn.ghassen.inventory.enums.ExpenseCategory;
+import tn.ghassen.inventory.enums.PaymentMethod;
+import tn.ghassen.inventory.enums.PaymentStatus;
+
+import java.math.BigDecimal;
+
+public record ExpenseCreateDTO(
+        String description,
+        BigDecimal amount,
+        ExpenseCategory category,
+        PaymentMethod paymentMethod,
+        PaymentStatus paymentStatus
+) {
+}
