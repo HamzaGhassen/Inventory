@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public record PurchaseItemUpdateDTO(
         Long productId,
+        Long purchaseId,
         Long rawMaterialId,
         BigDecimal quantity,
         BigDecimal unitPrice,
