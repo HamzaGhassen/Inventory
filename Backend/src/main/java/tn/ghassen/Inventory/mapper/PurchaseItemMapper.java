@@ -13,10 +13,8 @@ public class PurchaseItemMapper {
         PurchaseItem item = new PurchaseItem();
         item.setQuantity(dto.quantity());
         item.setUnitPrice(dto.unitPrice());
-        item.setTotalPrice(dto.totalPrice());
         item.setDiscount(dto.discount());
         item.setTax(dto.tax());
-        item.setSubtotal(dto.subtotal());
         return item;
     }
 
@@ -56,4 +54,5 @@ public class PurchaseItemMapper {
                 item.getCreatedAt()
         );
     }
+   public PurchaseItemResponseDTO toResponse(PurchaseItem item){return toResponseDTO(item);}
 }
