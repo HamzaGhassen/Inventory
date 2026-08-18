@@ -42,7 +42,7 @@ public class StockMovement extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "rawmaterial_id")
-    private RawMaterial rawaterial;
+    private RawMaterial rawMaterial;
 
 
 
