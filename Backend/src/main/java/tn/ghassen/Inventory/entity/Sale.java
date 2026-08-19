@@ -51,8 +51,12 @@ public class Sale extends BaseEntity{
     @Column(nullable = false)
     private PaymentMethod paymentMethod;
 
-    @OneToMany(mappedBy = "sale")
-    private List<StockMovement> stockMovements;
+    @OneToMany(
+            mappedBy = "sale",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<StockMovement> stockMovements = new ArrayList<>();
 
 
 }

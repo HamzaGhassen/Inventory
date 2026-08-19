@@ -44,6 +44,9 @@ public class StockMovement extends BaseEntity{
     @JoinColumn(name = "rawmaterial_id")
     private RawMaterial rawMaterial;
 
+    @ManyToOne
+    @JoinColumn(name = "sale_id")
+    private Sale sale;
 
 
 }
