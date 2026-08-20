@@ -24,7 +24,6 @@ private final PurchaseItemMapper purchaseItemMapper;
         }
         Purchase purchase = new Purchase();
 
-        purchase.setTotalAmount(dto.totalAmount());
         purchase.setPaymentStatus(dto.paymentStatus());
         purchase.setPaymentMethod(dto.paymentMethod());
 
@@ -55,7 +54,8 @@ private final PurchaseItemMapper purchaseItemMapper;
                 items,
                 purchase.getPaymentStatus(),
                 purchase.getPaymentMethod(),
-                purchase.getCreatedAt()
+                purchase.getCreatedAt(),
+                purchase.getUpdatedAt()
         );
     }
     public  PurchaseResponseDTO toResponse(Purchase purchase){return toResponseDTO(purchase);}

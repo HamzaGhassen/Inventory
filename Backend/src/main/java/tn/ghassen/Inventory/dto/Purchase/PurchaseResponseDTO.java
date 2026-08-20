@@ -17,7 +17,8 @@ public record PurchaseResponseDTO (
         List<PurchaseItemResponseDTO> purchaseItems,
         PaymentStatus paymentStatus,
         PaymentMethod paymentMethod,
-        LocalDateTime createdAt
+        LocalDateTime createdAt,
+        LocalDateTime updateAt
 )
 {
 }

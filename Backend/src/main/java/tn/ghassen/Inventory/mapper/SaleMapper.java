@@ -33,7 +33,7 @@ public class SaleMapper {
         return sale;
     }
 
-    public void updateSale(Sale sale , SaleUpdateDTO dto) {
+    public void updateEntity(Sale sale , SaleUpdateDTO dto) {
         if (dto.totalAmount() != null){
             sale.setTotalAmount(dto.totalAmount());
         }

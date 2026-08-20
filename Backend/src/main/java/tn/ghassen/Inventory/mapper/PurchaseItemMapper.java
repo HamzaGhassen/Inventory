@@ -25,18 +25,14 @@ public class PurchaseItemMapper {
         if (dto.unitPrice() != null) {
             item.setUnitPrice(dto.unitPrice());
         }
-        if (dto.totalPrice() != null) {
-            item.setTotalPrice(dto.totalPrice());
-        }
+
         if (dto.discount() != null) {
             item.setDiscount(dto.discount());
         }
         if (dto.tax() != null) {
             item.setTax(dto.tax());
         }
-        if (dto.subtotal() != null) {
-            item.setSubtotal(dto.subtotal());
-        }
+
     }
 
     public PurchaseItemResponseDTO toResponseDTO(PurchaseItem item) {
@@ -54,5 +50,4 @@ public class PurchaseItemMapper {
                 item.getCreatedAt()
         );
     }
-   public PurchaseItemResponseDTO toResponse(PurchaseItem item){return toResponseDTO(item);}
 }
