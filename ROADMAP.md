@@ -222,67 +222,87 @@ The platform will evolve beyond a traditional ERP by allowing employees to maint
 - LinkedIn profile integration (if supported by available APIs and user consent).
 - Secure transfer of professional profiles between companies while preserving data ownership and privacy.
 
+## 🚀 Roadmap(first virsion)
 
-✅ Phase 1 - Project Initialization
-    ✔ Spring Boot
-    ✔ Maven
-    ✔ Git
-    ✔ PostgreSQL
+### 🟢 Phase 1 — Project Setup
+✔ Spring Boot
+✔ Maven
+✔ Git
+✔ PostgreSQL
 
-🟢 Phase 2 - User & Company (In Progress)
-    ✔ User
-    ✔ Company
-    ✔ Role
-    ✔ Department
-    ✔ EmployeeStatus
-    ✔ User → Company Relationship
+### 🟢 Phase 2 — Entities
+✔ User
+✔ Company
+✔ Supplier
+✔ Customer
+✔ RawMaterial
+✔ Product
+✔ Formula
+✔ FormulaItem
+✔ Purchase
+✔ PurchaseItem
+✔ Sale
+✔ SaleItem
+✔ StockMovement
+✔ Expense
+✔ FinancialTransaction
 
-⬜ Phase 3 - Business Partners
-    □ Supplier
-    □ Customer
+### 🟢 Phase 3 — DTOs
+✔ Create DTOs
+✔ Update DTOs
+✔ Response DTOs
 
-⬜ Phase 4 - Inventory
-    □ RawMaterial
-    □ Product
+### 🟢 Phase 4 — Mappers
+✔ Entity → DTO
+✔ DTO → Entity
+✔ Update mapping
+✔ Relationship mapping
 
-⬜ Phase 5 - Manufacturing
-    □ Formula
-    □ FormulaItem
+### 🟢 Phase 5 — Service Layer
+✔ Service interfaces
+✔ Initial service implementations
+✔ Basic CRUD structure
+✔ Mapper integration
 
-⬜ Phase 6 - Purchasing
-    □ Purchase
-    □ PurchaseItem
+### 🟢 Phase 6 — Repository
+✔ Repository
+✔ Custom queries
+✔ Search / filtering
+✔ Pagination
 
-⬜ Phase 7 - Sales
-    □ Sale
-    □ SaleItem
+### 🟢 Phase 7 — Business Logic
+✔ Purchasing
+✔ Sales
+✔ Inventory
+✔ Manufacturing
+✔ Stock management
+✔ Finance
 
-⬜ Phase 8 - Stock Management
-    □ StockMovement
+### ⬜ Phase 8 — REST API
+□ Controllers
+□ CRUD endpoints
+□ Validation
+□ Exception handling
+□ Swagger / OpenAPI
 
-⬜ Phase 9 - Finance
-    □ Expense
-    □ FinancialTransaction
+### ⬜ Phase 9 — Security
+□ Spring Security
+□ JWT
+□ Authentication
+□ Authorization
 
-⬜ Phase 10 - Security
-    □ Spring Security
-    □ JWT
-    □ Authentication
-    □ Authorization
+### ⬜ Phase 10 — Testing
+□ Unit tests
+□ Integration tests
+□ API tests
 
-⬜ Phase 11 - REST API
-    □ Repository
-    □ Service
-    □ DTO
-    □ Controller
-    □ Exception Handling
+### ⬜ Phase 11 — Frontend
+□ Angular setup
+□ Authentication
+□ Dashboard
+□ CRUD pages
 
-⬜ Phase 12 - Frontend
-    □ Angular Dashboard
-    □ Authentication
-    □ CRUD Pages
-
-⬜ Phase 13 - Deployment
-    □ Docker
-    □ CI/CD
-    □ Cloud Deployment
+### ⬜ Phase 12 — Deployment
+□ Docker
+□ CI/CD
+□ Cloud deployment
