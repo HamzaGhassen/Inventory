@@ -1,18 +1,20 @@
 package tn.ghassen.inventory.service;
 
-import tn.ghassen.inventory.entity.Customer;
+import tn.ghassen.inventory.dto.Customer.CustomerCreateDTO;
+import tn.ghassen.inventory.dto.Customer.CustomerResponseDTO;
+import tn.ghassen.inventory.dto.Customer.CustomerUpdateDTO;
 
 import java.util.List;
 
 public interface CustomerService {
 
-    Customer createCustomer(Customer customer);
+    CustomerResponseDTO createCustomer(CustomerCreateDTO dto);
 
-    Customer getCustomerById(Long id);
+    CustomerResponseDTO getCustomerById(Long id);
 
-    List<Customer> getAllCustomers();
+    List<CustomerResponseDTO> getAllCustomers();
 
-    Customer updateCustomer(Long id, Customer customer);
+    CustomerResponseDTO updateCustomer(Long id, CustomerUpdateDTO dto);
 
     void deleteCustomer(Long id);
 }
