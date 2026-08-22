@@ -34,8 +34,9 @@ public class CustomerMapper {
         dto.setLogo(customer.getLogo());
 
 
-        dto.setCompanyId(customer.getCompany().getId());
-
+        if (customer.getCompany() != null) {
+            dto.setCompanyId(customer.getCompany().getId());
+        }
 
         return dto;
     }
