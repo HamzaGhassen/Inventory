@@ -83,3 +83,41 @@ flowchart LR
 ```
 
 The application follows an MVC architecture with Angular Components as the View and Spring Boot handling the Controller and Model layers. This separation of concerns promotes clean, maintainable, testable, and scalable code, while keeping the frontend and backend responsibilities clearly defined.
+
+<br>
+</be>
+
+## Security & Company Isolation
+
+#### Changes
+
+* Added Spring Security.
+* Added `UserRepository.findByEmail()`.
+* Added authenticated user detection.
+* Added company-based Expense filtering.
+* Updated Expense CRUD operations to respect company isolation.
+
+#### Expense Repository
+
+```java
+Optional<Expense> findByIdAndCompanyId(Long id, Long companyId);
+List<Expense> findByCompanyId(Long companyId);
+```
+
+#### Dependency
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+
+#### Status
+
+* ✅ Spring Security
+* ✅ Authenticated User
+* ✅ Company Isolation
+* ⬜ JWT
+* ⬜ Authorization
+
