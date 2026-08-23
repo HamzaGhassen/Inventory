@@ -11,6 +11,7 @@ public record ExpenseUpdateDTO(
         BigDecimal amount,
         ExpenseCategory category,
         PaymentMethod paymentMethod,
-        PaymentStatus paymentStatus
+        PaymentStatus paymentStatus,
+        Long supplierId
 ) {
 }
