@@ -1,19 +1,20 @@
 package tn.ghassen.inventory.service;
 
-import tn.ghassen.inventory.entity.Expense;
+import tn.ghassen.inventory.dto.Expense.ExpenseCreateDTO;
+import tn.ghassen.inventory.dto.Expense.ExpenseResponseDTO;
+import tn.ghassen.inventory.dto.Expense.ExpenseUpdateDTO;
 
 import java.util.List;
 
 public interface ExpenseService {
 
-    Expense createExpense(Expense expense);
+    ExpenseResponseDTO createExpense(ExpenseCreateDTO dto);
 
-    Expense getExpenseById(Long id);
+    ExpenseResponseDTO getExpenseById(Long id);
 
-    List<Expense> getAllExpenses();
+    List<ExpenseResponseDTO> getAllExpenses();
 
-    Expense updateExpense(Long id ,Expense expense);
+    ExpenseResponseDTO updateExpense(Long id, ExpenseUpdateDTO dto);
 
     void deleteExpense(Long id);
-
 }
