@@ -120,4 +120,30 @@ List<Expense> findByCompanyId(Long companyId);
 * ✅ Company Isolation
 * ⬜ JWT
 * ⬜ Authorization
+  
+## Expense & Supplier Relationship
 
+- Supplier is **optional** for an Expense.
+- A Supplier can be **Global** or **Company-specific**.
+- A **Global Supplier** is not associated with any Company in the platform (`company = null`).
+- A **Company-specific Supplier** belongs to a Company registered in the platform.
+- If no supplier is selected, the Expense is saved without a supplier.
+- If a supplier is selected, the backend checks if it exists using `findById()`.
+- If the supplier exists, it is assigned to the Expense.
+- If the supplier doesn't exist, an exception is thrown and the Expense is not saved.
+
+## Supplier Types
+
+```text
+                    Supplier
+                       │
+             ┌─────────┴─────────┐
+             ↓                   ↓
+          GLOBAL              SPECIFIC
+       company = null       company = Company
+             │                   │
+             ↓                   ↓
+   No company associated     Company exists
+   with the platform         in the platform
+
+```
