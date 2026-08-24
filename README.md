@@ -85,42 +85,29 @@ flowchart LR
 The application follows an MVC architecture with Angular Components as the View and Spring Boot handling the Controller and Model layers. This separation of concerns promotes clean, maintainable, testable, and scalable code, while keeping the frontend and backend responsibilities clearly defined.
 
 <br>
-</be>
+</br>
 
 ## Security & Company Isolation
 
-#### Changes
+The Inventory ERP is designed as a **multi-company system**, so users must only access data belonging to their own company.
 
-* Added Spring Security.
-* Added `UserRepository.findByEmail()`.
-* Added authenticated user detection.
-* Added company-based Expense filtering.
-* Updated Expense CRUD operations to respect company isolation.
+For sensitive operations such as listing, viewing, updating, or deleting Expenses, we first identify the **currently authenticated user** through Spring Security and obtain their **Company**. The Company ID is then used to restrict database queries to that company's data. This prevents users from accessing data belonging to another company.
 
-#### Expense Repository
+### Expense Flow
 
-```java
-Optional<Expense> findByIdAndCompanyId(Long id, Long companyId);
-List<Expense> findByCompanyId(Long companyId);
+```mermaid
+   flowchart TD
+    C["🏢 Company"] -->|"has"| U["🟢 👤 Authenticated User"]
+
+    U -->|"uses"| UI["🖥️ Create Expense UI"]
+
+    UI -->|"creates"| E["💰 Expense"]
+
+    UI -. "optionally selects" .-> S["👤 Supplier"]
+    S -. "assigned to" .-> E
+
+    E -->|"belongs to"| C
 ```
-
-#### Dependency
-
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-security</artifactId>
-</dependency>
-```
-
-#### Status
-
-* ✅ Spring Security
-* ✅ Authenticated User
-* ✅ Company Isolation
-* ⬜ JWT
-* ⬜ Authorization
-  
 ## Expense & Supplier Relationship
 
 - Supplier is **optional** for an Expense.
