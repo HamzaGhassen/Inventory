@@ -85,39 +85,52 @@ flowchart LR
 The application follows an MVC architecture with Angular Components as the View and Spring Boot handling the Controller and Model layers. This separation of concerns promotes clean, maintainable, testable, and scalable code, while keeping the frontend and backend responsibilities clearly defined.
 
 <br>
-</be>
+</br>
 
 ## Security & Company Isolation
 
-#### Changes
+The Inventory ERP is designed as a **multi-company system**, so users must only access data belonging to their own company.
 
-* Added Spring Security.
-* Added `UserRepository.findByEmail()`.
-* Added authenticated user detection.
-* Added company-based Expense filtering.
-* Updated Expense CRUD operations to respect company isolation.
+For sensitive operations such as listing, viewing, updating, or deleting Expenses, we first identify the **currently authenticated user** through Spring Security and obtain their **Company**. The Company ID is then used to restrict database queries to that company's data. This prevents users from accessing data belonging to another company.
 
-#### Expense Repository
+### Expense Flow
 
-```java
-Optional<Expense> findByIdAndCompanyId(Long id, Long companyId);
-List<Expense> findByCompanyId(Long companyId);
+```mermaid
+   flowchart TD
+    C["🏢 Company"] -->|"has"| U["🟢 👤 Authenticated User"]
+
+    U -->|"uses"| UI["🖥️ Create Expense UI"]
+
+    UI -->|"creates"| E["💰 Expense"]
+
+    UI -. "optionally selects" .-> S["👤 Supplier"]
+    S -. "assigned to" .-> E
+
+    E -->|"belongs to"| C
 ```
+## Expense & Supplier Relationship
 
-#### Dependency
+- Supplier is **optional** for an Expense.
+- A Supplier can be **Global** or **Company-specific**.
+- A **Global Supplier** is not associated with any Company in the platform (`company = null`).
+- A **Company-specific Supplier** belongs to a Company registered in the platform.
+- If no supplier is selected, the Expense is saved without a supplier.
+- If a supplier is selected, the backend checks if it exists using `findById()`.
+- If the supplier exists, it is assigned to the Expense.
+- If the supplier doesn't exist, an exception is thrown and the Expense is not saved.
 
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-security</artifactId>
-</dependency>
+## Supplier Types
+
+```text
+                    Supplier
+                       │
+             ┌─────────┴─────────┐
+             ↓                   ↓
+          GLOBAL              SPECIFIC
+       company = null       company = Company
+             │                   │
+             ↓                   ↓
+   No company associated     Company exists
+   with the platform         in the platform
+
 ```
-
-#### Status
-
-* ✅ Spring Security
-* ✅ Authenticated User
-* ✅ Company Isolation
-* ⬜ JWT
-* ⬜ Authorization
-
