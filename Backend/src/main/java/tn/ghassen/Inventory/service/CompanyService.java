@@ -1,18 +1,21 @@
 package tn.ghassen.inventory.service;
 
+import tn.ghassen.inventory.dto.company.CompanyCreateDTO;
+import tn.ghassen.inventory.dto.company.CompanyResponseDTO;
+import tn.ghassen.inventory.dto.company.CompanyUpdateDTO;
 import tn.ghassen.inventory.entity.Company;
 
 import java.util.List;
 
 public interface CompanyService {
 
-    Company createCompany(Company company);
+    CompanyResponseDTO createCompany(CompanyCreateDTO dto);
 
-    Company getCompanyById(Long id);
+    CompanyResponseDTO getCompanyById(Long id);
 
-    List<Company> getAllCompanies();
+    List<CompanyResponseDTO> getAllCompanies();
 
-    Company updateCompany(Long id, Company company);
+    CompanyResponseDTO updateCompany(Long id, CompanyUpdateDTO dto);
 
     void deleteCompany(Long id);
 }
