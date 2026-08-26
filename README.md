@@ -134,3 +134,106 @@ For sensitive operations such as listing, viewing, updating, or deleting Expense
    with the platform         in the platform
 
 ```
+
+# Financial Transaction
+
+I decided to use an authorization workflow for Financial Transactions because I don't want the application to directly assume that a user is allowed to update a transaction.
+
+The idea is simple: **the user sends a request, the system checks authorization, and the authorization service returns a decision.**
+
+## 🔐 Update Workflow
+
+```text
+User
+ ↓
+Update Transaction Request
+ ↓
+Find Transaction
+ ↓
+Get Authenticated User
+ ↓
+Send Authorization Request
+ ↓
+Authorization Response
+ ↓
+ ┌──────────────┐
+ │              │
+ TRUE          FALSE
+ │              │
+ ↓              ↓
+Update         Reject
+Transaction    Request
+ ↓
+Save
+ ↓
+ResponseDTO
+```
+
+## Authorization
+
+The authorization request contains:
+
+```java
+AuthorizationRequest request = new AuthorizationRequest(
+        currentUser.getId(),
+        finance.getId(),
+        "UPDATE"
+);
+```
+
+The authorization service returns a decision:
+
+```java
+AuthorizationResponse response =
+        authorizationService.checkAuthorization(request);
+
+return response.isAuthorized();
+```
+
+So the application does not decide authorization by itself. It **asks the authorization system and uses its response**.
+
+## Update Method
+
+```java
+@Override
+public FinancialTransactionResponseDTO updateFinancialTransaction(
+        Long id,
+        FinancialTransactionUpdateDTO dto) {
+
+    FinancialTransaction existing =
+            financialTransactionRepository.findById(id)
+                    .orElseThrow(() ->
+                            new RuntimeException(
+                                    "Financial transaction not found with id: " + id
+                            ));
+
+    User currentUser = getAuthenticatedUser();
+
+    if (!getAuthorized(currentUser, existing)) {
+        throw new RuntimeException(
+                "This user is not authorized to update this financial transaction"
+        );
+    }
+
+    financialTransactionMapper.updateEntity(existing, dto);
+
+    FinancialTransaction updated =
+            financialTransactionRepository.save(existing);
+
+    return financialTransactionMapper.toResponseDTO(updated);
+}
+```
+
+## Main Idea
+
+The responsibilities are separated:
+
+* **Spring Security** → identifies the authenticated user.
+* **Authorization Service** → returns `true` or `false`.
+* **Financial Transaction Service** → performs the update only when authorized.
+* **Mapper** → converts between DTOs and entities.
+
+The important rule is:
+
+> **The client requests an action; the backend asks for an authorization decision; only an authorized request is executed.**
+
