@@ -1,18 +1,20 @@
 package tn.ghassen.inventory.service;
 
-import tn.ghassen.inventory.entity.FinancialTransaction;
+import tn.ghassen.inventory.dto.FinancialTransaction.FinancialTransactionCreateDTO;
+import tn.ghassen.inventory.dto.FinancialTransaction.FinancialTransactionResponseDTO;
+import tn.ghassen.inventory.dto.FinancialTransaction.FinancialTransactionUpdateDTO;
 
 import java.util.List;
 
 public interface FinancialTransactionService {
 
-    FinancialTransaction createFinancialTransaction(FinancialTransaction financialTransaction);
+    FinancialTransactionResponseDTO createFinancialTransaction(FinancialTransactionCreateDTO dto);
 
-    FinancialTransaction getFinancialTransactionById(Long id);
+    FinancialTransactionResponseDTO getFinancialTransactionById(Long id);
 
-    List<FinancialTransaction> getAllFinancialTransaction();
+    List<FinancialTransactionResponseDTO> getAllFinancialTransaction();
 
-    FinancialTransaction updateFinancialTransaction(Long id, FinancialTransaction financialTransaction);
+    FinancialTransactionResponseDTO updateFinancialTransaction(Long id, FinancialTransactionUpdateDTO dto);
 
     void deleteFinancialTransaction(Long id);
 }
