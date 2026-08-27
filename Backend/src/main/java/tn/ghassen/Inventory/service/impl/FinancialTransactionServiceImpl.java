@@ -14,6 +14,7 @@ import tn.ghassen.inventory.entity.User;
 import tn.ghassen.inventory.mapper.FinancialTransactionMapper;
 import tn.ghassen.inventory.repository.FinancialTransactionRepository;
 import tn.ghassen.inventory.repository.UserRepository;
+import tn.ghassen.inventory.dto.authorization.AuthorizationReport;
 import tn.ghassen.inventory.dto.authorization.AuthorizationRequest;
 import tn.ghassen.inventory.dto.authorization.AuthorizationResponse;
 import tn.ghassen.inventory.enums.Role;
@@ -98,7 +99,7 @@ public class FinancialTransactionServiceImpl implements FinancialTransactionServ
 
         User currentUser = getAuthenticatedUser();
 
-        if (!getAuthorized(currentUser, existing)) {
+        if (!getAuthorized(currentUser, existing, "UPDATE")) {
             throw new RuntimeException(
                     "This user is not authorized to update this financial transaction"
             );
@@ -112,10 +113,29 @@ public class FinancialTransactionServiceImpl implements FinancialTransactionServ
         return financialTransactionMapper.toResponseDTO(updated);
     }
 
+
     @Override
     public void deleteFinancialTransaction(Long id) {
-    financialTransactionRepository.deleteById(id);
+        FinancialTransaction existing = financialTransactionRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException(
+                                "Financial transaction not found with id: " + id
+                        ));
+
+        User currentUser = getAuthenticatedUser();
+
+        if (!getAuthorized(currentUser, existing, "DELETE")) {
+            throw new RuntimeException(
+                    "This user is not authorized to delete this financial transaction"
+            );
+        }
+
+        financialTransactionRepository.deleteById(existing.getId());
+
+
     }
+
+
     private User getAuthenticatedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated() || "anonymousUser".equals(authentication.getPrincipal())) {
@@ -140,20 +160,18 @@ public class FinancialTransactionServiceImpl implements FinancialTransactionServ
                 .orElseThrow(() -> new RuntimeException("Authenticated user not found with email: " + email));
     }
 
-    private boolean getAuthorized(User currentUser, FinancialTransaction finance) {
+    private boolean getAuthorized(User currentUser, FinancialTransaction finance, String action) {
 
-        // Build the authorization request
-        AuthorizationRequest request = new AuthorizationRequest(
-                currentUser.getId(),
-                finance.getId(),
-                "UPDATE"
-        );
+        // 1/ Report(): Create authorization request report
+        AuthorizationReport report = authorizationService.createReport(currentUser, finance, action);
 
-        // Send request to the authorization system
-        AuthorizationResponse response =
-                authorizationService.checkAuthorization(request);
+        // 2/ getAuthorization(): Check authorization layer before report reaches HelpDesk
+        boolean isAuthorized = authorizationService.getAuthorization(report);
+        if (!isAuthorized) {
+            return false;
+        }
 
-        // Return the decision received from the authorization system
-        return response.isAuthorized();
+        // 3/ Confirmation(): HelpDesk confirmation ("VALID" vs "REJECT"). Returns true if VALID, throws RuntimeException if REJECT
+        return authorizationService.processConfirmation(report, "VALID");
     }
 }
