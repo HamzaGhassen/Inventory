@@ -239,6 +239,35 @@ The important rule is:
 
 ## Changing Workflow for Authorization
 
-![Financial Transaction Authorization Workflow](docs/images/financial-transaction-authorization.png)
-
 I previously implemented a simpler authorization approach for Financial Transactions, but after reviewing the workflow, I decided to improve it by introducing a **HelpDesk-based approval process**. The new approach separates the authorization into clear stages: the user first submits an authorization report, the backend verifies that the request is valid and belongs to the correct company, and then the request is sent to a HelpDesk user for a final decision. Only after receiving a **`VALID`** confirmation can the requested update or deletion be executed. If the request is **`REJECT`** or fails the initial verification, the operation is stopped. This change makes the authorization process more controlled, traceable, and easier to extend while keeping the responsibility for the final decision outside the transaction operation itself.
+
+### Financial Transaction Authorization Flow (UML Sequence Diagram)
+ 
+```mermaid
+sequenceDiagram
+    actor User as Current User<br/>(Employee/Manager)
+    participant FE as Frontend<br/>(Angular UI)
+    participant BE as Backend<br/>(FinancialTransaction /<br/>AuthorizationService)
+    actor Help as HelpDesk User<br/>(Role: HELPDESK)
+ 
+    User->>FE: Click "Update" or "Delete" Transaction
+    FE->>BE: 1/ Report(): Create Authorization Report<br/>(Subject, UserEmail, Date, Company)
+    BE->>BE: 2/ getAuthorization(): Verify Sender Layer<br/>(Role != VISITOR, Company Match)
+ 
+    alt getAuthorization() == false
+        BE-->>FE: Reject request immediately (Unauthorized)
+    else getAuthorization() == true
+        BE-->>Help: Forward Report to HelpDesk Dashboard
+        Help->>FE: Review Report & Select Decision<br/>("VALID" or "REJECT")
+        FE->>BE: 3/ Confirmation(): Send HelpDesk decision
+ 
+        alt Confirmation == "VALID"
+            BE->>BE: Access OPEN -> Execute Update / Delete in DB
+            BE-->>FE: Return Success ResponseDTO
+        else Confirmation == "REJECT"
+            BE->>BE: Access CLOSED -> Throw RuntimeException<br/>("Rejected by HelpDesk")
+            BE-->>FE: Return Error Message to User
+        end
+    end
+```
+ 
