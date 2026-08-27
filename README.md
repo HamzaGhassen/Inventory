@@ -237,3 +237,8 @@ The important rule is:
 
 > **The client requests an action; the backend asks for an authorization decision; only an authorized request is executed.**
 
+## Changing Workflow for Authorization
+
+![Financial Transaction Authorization Workflow](docs/images/financial-transaction-authorization.png)
+
+I previously implemented a simpler authorization approach for Financial Transactions, but after reviewing the workflow, I decided to improve it by introducing a **HelpDesk-based approval process**. The new approach separates the authorization into clear stages: the user first submits an authorization report, the backend verifies that the request is valid and belongs to the correct company, and then the request is sent to a HelpDesk user for a final decision. Only after receiving a **`VALID`** confirmation can the requested update or deletion be executed. If the request is **`REJECT`** or fails the initial verification, the operation is stopped. This change makes the authorization process more controlled, traceable, and easier to extend while keeping the responsibility for the final decision outside the transaction operation itself.
