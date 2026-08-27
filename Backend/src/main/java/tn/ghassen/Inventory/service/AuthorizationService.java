@@ -17,6 +17,9 @@ public interface AuthorizationService {
     // 3/ Confirmation(): Treats HelpDesk confirmation ("VALID" vs "REJECT"). Returns true if VALID, throws RuntimeException if REJECT
     boolean processConfirmation(AuthorizationReport report, String confirmationStatus);
 
-    // Backward compatibility check
+    /**
+     * @deprecated Use {@link #createReport}, {@link #getAuthorization}, and {@link #processConfirmation} instead.
+     */
+    @Deprecated
     AuthorizationResponse checkAuthorization(AuthorizationRequest request);
 }

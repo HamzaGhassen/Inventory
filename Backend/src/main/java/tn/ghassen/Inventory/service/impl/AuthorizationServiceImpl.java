@@ -103,6 +103,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
                 + (report != null ? report.getUserEmail() : "unknown"));
     }
 
+    @Deprecated
     @Override
     public AuthorizationResponse checkAuthorization(AuthorizationRequest request) {
         if (request == null || request.getUserId() == null || request.getTransactionId() == null) {
@@ -117,7 +118,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         }
 
         try {
-            AuthorizationReport report = createReport(user, transaction, request.getAction() != null ? request.getAction() : "UPDATE");
+            AuthorizationReport report = createReport(user, transaction, request.getAction());
             boolean isAuthorized = getAuthorization(report);
             if (!isAuthorized) {
                 return new AuthorizationResponse(false);
