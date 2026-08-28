@@ -1,18 +1,22 @@
 package tn.ghassen.inventory.service;
 
-import tn.ghassen.inventory.entity.FormulaItem;
+import tn.ghassen.inventory.dto.FormulaItem.FormulaItemCreateDTO;
+import tn.ghassen.inventory.dto.FormulaItem.FormulaItemResponseDTO;
+import tn.ghassen.inventory.dto.FormulaItem.FormulaItemUpdateDTO;
 
 import java.util.List;
 
 public interface FormulaItemService {
 
-    FormulaItem createFormulaItem(FormulaItem formulaItem);
+    FormulaItemResponseDTO createFormulaItem(FormulaItemCreateDTO dto);
 
-    FormulaItem getFormulaItemById(Long id);
+    FormulaItemResponseDTO getFormulaItemById(Long id);
 
-    List<FormulaItem> getAllFormulaItem();
+    List<FormulaItemResponseDTO> getAllFormulaItems();
 
-    FormulaItem updateFormulaItem(Long id , FormulaItem formulaItem);
+    List<FormulaItemResponseDTO> getFormulaItemsByFormulaId(Long formulaId);
+
+    FormulaItemResponseDTO updateFormulaItem(Long id, FormulaItemUpdateDTO dto);
 
     void deleteFormulaItem(Long id);
 }
