@@ -24,8 +24,10 @@ public class ProductMapper {
         return product;
     }
 
-    public ProductResponseDTO toResponse(Product product){
-
+    public ProductResponseDTO toResponse(Product product) {
+        if (product == null) {
+            return null;
+        }
         return new ProductResponseDTO(
                 product.getId(),
                 product.getName(),
@@ -35,11 +37,14 @@ public class ProductMapper {
                 product.getQuantity(),
                 product.getProductType(),
                 product.getUnit(),
-                product.getCompany().getId(),
-                product.getCompany().getName()
+                product.getCompany() != null ? product.getCompany().getId() : null,
+                product.getCompany() != null ? product.getCompany().getName() : null
         );
+    }
 
-   }
+    public ProductResponseDTO toResponseDTO(Product product) {
+        return toResponse(product);
+    }
 
     public void updateEntity(Product product, ProductUpdateDTO dto) {
 

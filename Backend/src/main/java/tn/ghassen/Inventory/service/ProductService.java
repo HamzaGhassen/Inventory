@@ -1,18 +1,20 @@
 package tn.ghassen.inventory.service;
 
-import tn.ghassen.inventory.entity.Product;
+import tn.ghassen.inventory.dto.Product.ProductCreateDTO;
+import tn.ghassen.inventory.dto.Product.ProductResponseDTO;
+import tn.ghassen.inventory.dto.Product.ProductUpdateDTO;
 
 import java.util.List;
 
 public interface ProductService {
 
-    Product createProduct(Product product);
+    ProductResponseDTO createProduct(ProductCreateDTO dto);
 
-    Product getProductById(Long id);
+    ProductResponseDTO getProductById(Long id);
 
-    List<Product> getAllProducts();
+    List<ProductResponseDTO> getAllProducts();
 
-    Product updateProduct(Long id, Product product);
+    ProductResponseDTO updateProduct(Long id, ProductUpdateDTO dto);
 
     void deleteProduct(Long id);
 }
