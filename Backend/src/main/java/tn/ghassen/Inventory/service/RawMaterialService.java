@@ -1,18 +1,20 @@
 package tn.ghassen.inventory.service;
 
-import tn.ghassen.inventory.entity.RawMaterial;
+import tn.ghassen.inventory.dto.RawMaterial.RawMaterialCreateDTO;
+import tn.ghassen.inventory.dto.RawMaterial.RawMaterialResponseDTO;
+import tn.ghassen.inventory.dto.RawMaterial.RawMaterialUpdateDTO;
 
 import java.util.List;
 
 public interface RawMaterialService {
 
-    RawMaterial createRawMaterial(RawMaterial rawMaterial);
+    RawMaterialResponseDTO createRawMaterial(RawMaterialCreateDTO dto);
 
-    RawMaterial getRawMaterialById(Long id);
+    RawMaterialResponseDTO getRawMaterialById(Long id);
 
-    List<RawMaterial> getAllRawMaterials();
+    List<RawMaterialResponseDTO> getAllRawMaterials();
 
-    RawMaterial updateRawMaterial(Long id ,RawMaterial rawMaterial);
+    RawMaterialResponseDTO updateRawMaterial(Long id, RawMaterialUpdateDTO dto);
 
     void deleteRawMaterial(Long id);
 
