@@ -5,10 +5,10 @@ import java.math.BigDecimal;
 public record PurchaseItemCreateDTO(
         Long productId,
         Long rawMaterialId,
+        Long purchaseId,
         BigDecimal quantity,
         BigDecimal unitPrice,
         BigDecimal discount,
         BigDecimal tax
-
 ) {
 }
