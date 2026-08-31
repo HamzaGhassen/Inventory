@@ -24,39 +24,50 @@ public class RawMaterialMapper {
 
     }
 
-public RawMaterialResponseDTO toResponse(RawMaterial raw){
+public RawMaterialResponseDTO toResponse(RawMaterial raw) {
+        if (raw == null) {
+            return null;
+        }
         return new RawMaterialResponseDTO(
+                raw.getId(),
                 raw.getName(),
                 raw.getLogo(),
                 raw.getCostPrice(),
                 raw.getQuantity(),
                 raw.getUnit(),
                 raw.getStatus(),
-                raw.getCompany() != null ? raw.getCompany().getId() : null ,
+                raw.getCompany() != null ? raw.getCompany().getId() : null,
                 raw.getCreatedAt(),
                 raw.getUpdatedAt()
         );
 }
 
-public void UpdateEntity(RawMaterial raw , RawMaterialUpdateDTO dto){
+public RawMaterialResponseDTO toResponseDTO(RawMaterial raw) {
+        return toResponse(raw);
+}
 
+public void updateEntity(RawMaterial raw, RawMaterialUpdateDTO dto) {
         if (dto.name() != null) {
             raw.setName(dto.name());
         }
-        if (dto.logo() != null){
+        if (dto.logo() != null) {
             raw.setLogo(dto.logo());
         }
-        if (dto.costPrice() != null){
+        if (dto.costPrice() != null) {
             raw.setCostPrice(dto.costPrice());
         }
-        if (dto.quantity() != null){
+        if (dto.quantity() != null) {
             raw.setQuantity(dto.quantity());
         }
-        if (dto.unit() != null){
+        if (dto.unit() != null) {
             raw.setUnit(dto.unit());
         }
-        if (dto.status() != null){
+        if (dto.status() != null) {
             raw.setStatus(dto.status());
         }
+}
+
+public void UpdateEntity(RawMaterial raw, RawMaterialUpdateDTO dto) {
+        updateEntity(raw, dto);
 }
 }
