@@ -24,6 +24,7 @@ private final PurchaseItemMapper purchaseItemMapper;
         }
         Purchase purchase = new Purchase();
 
+        purchase.setTotalAmount(dto.totalAmount());
         purchase.setPaymentStatus(dto.paymentStatus());
         purchase.setPaymentMethod(dto.paymentMethod());
 
