@@ -11,6 +11,7 @@ public record RawMaterialUpdateDTO(
         BigDecimal costPrice,
         BigDecimal quantity,
         Unit unit,
-        RawMaterialStatus status
+        RawMaterialStatus status,
+        Long companyId
 ) {
 }
