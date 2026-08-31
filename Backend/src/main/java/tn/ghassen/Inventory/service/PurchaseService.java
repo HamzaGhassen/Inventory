@@ -1,18 +1,20 @@
 package tn.ghassen.inventory.service;
 
-import tn.ghassen.inventory.entity.Purchase;
+import tn.ghassen.inventory.dto.Purchase.PurchaseCreateDTO;
+import tn.ghassen.inventory.dto.Purchase.PurchaseResponseDTO;
+import tn.ghassen.inventory.dto.Purchase.PurchaseUpdateDTO;
 
 import java.util.List;
 
 public interface PurchaseService {
 
-    Purchase createPurchase(Purchase purchase);
+    PurchaseResponseDTO createPurchase(PurchaseCreateDTO dto);
 
-    Purchase getPurchaseById(Long id);
+    PurchaseResponseDTO getPurchaseById(Long id);
 
-    List<Purchase> getAllPurchases();
+    List<PurchaseResponseDTO> getAllPurchases();
 
-    Purchase updatePurchase(Long id, Purchase purchase);
+    PurchaseResponseDTO updatePurchase(Long id, PurchaseUpdateDTO dto);
 
     void deletePurchase(Long id);
 }
