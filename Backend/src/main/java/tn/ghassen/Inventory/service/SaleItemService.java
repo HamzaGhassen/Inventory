@@ -1,18 +1,21 @@
 package tn.ghassen.inventory.service;
 
+import tn.ghassen.inventory.dto.Sale_Item.SaleItemCreateDTO;
+import tn.ghassen.inventory.dto.Sale_Item.SaleItemResponseDTO;
+import tn.ghassen.inventory.dto.Sale_Item.SaleItemUpdateDTO;
 import tn.ghassen.inventory.entity.SaleItem;
 
 import java.util.List;
 
 public interface SaleItemService {
 
-    SaleItem createSaleItem(SaleItem saleItem);
+    SaleItemResponseDTO createSaleItem(SaleItemCreateDTO dto);
 
-    SaleItem getSaleItemById(Long id);
+    SaleItemResponseDTO getSaleItemById(Long id);
 
-    List<SaleItem> getAllSaleItem();
+    List<SaleItemResponseDTO> getAllSaleItem();
 
-    SaleItem updateSaleItem(Long id , SaleItem saleItem);
+    SaleItemResponseDTO updateSaleItem(Long id , SaleItemUpdateDTO dto);
 
     void deleteSaleItem(Long id);
 }
